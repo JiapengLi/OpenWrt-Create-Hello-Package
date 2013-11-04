@@ -1,0 +1,78 @@
+commit 2d4b9add2888b8b1684f54d90f7ab6cf639ac562
+Author: JiapengLi <gapleehit@gmail.com>
+Date:   Mon Nov 4 15:33:31 2013 +0800
+
+    Create custom package.
+
+diff --git a/utils/hello/Makefile b/utils/hello/Makefile
+new file mode 100644
+index 0000000..7523d83
+--- /dev/null
++++ b/utils/hello/Makefile
+@@ -0,0 +1,35 @@
++include $(TOPDIR)/rules.mk
++
++PKG_NAME:=hello
++PKG_VERSION:=0.1
++PKG_RELEASE:=1
++
++PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
++
++include $(INCLUDE_DIR)/package.mk
++
++define Package/hello
++	SECTION:=utils
++	CATEGORY:=Utilities
++	TITLE:=Hello Openwrt
++endef
++
++define Package/hello/description
++	Hello OpenWrt
++endef
++
++define Package/hello/Build/Compile
++	$(MAKE) -C $(PKG_BUILD_DIR) hello
++endef
++
++define Build/Prepare
++	mkdir -p $(PKG_BUILD_DIR)
++	$(CP) ./src/* $(PKG_BUILD_DIR)/
++endef
++
++define Package/hello/install
++	$(INSTALL_DIR) $(1)/bin/
++	$(INSTALL_BIN) $(PKG_BUILD_DIR)/hello $(1)/bin/hello
++endef
++
++$(eval $(call BuildPackage,hello))
+diff --git a/utils/hello/src/Makefile b/utils/hello/src/Makefile
+new file mode 100644
+index 0000000..c149bb4
+--- /dev/null
++++ b/utils/hello/src/Makefile
+@@ -0,0 +1,11 @@
++# build hello executable when user executes "make"
++
++hello: hello.o
++	$(CC) $(LDFLAGS) hello.o -o hello
++
++hello.o: hello.c
++	$(CC) $(CFLAGS) -c hello.c
++
++# remove object files and executable when user executes "make clean"
++clean:
++	rm *.o hello
+diff --git a/utils/hello/src/hello.c b/utils/hello/src/hello.c
+new file mode 100644
+index 0000000..9d38006
+--- /dev/null
++++ b/utils/hello/src/hello.c
+@@ -0,0 +1,8 @@
++#include <stdio.h>
++
++int main()
++{
++	printf("Hello OpenWrt!\n");
++
++	return 0;
++}
