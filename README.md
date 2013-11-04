@@ -28,7 +28,7 @@ Create a custom package for OpenWrt.
 
 ## Useful Links
 
-(Write and cmopile a simple package for OpenWrt)[http://www.gargoyle-router.com/wiki/doku.php?id=openwrt_coding]
-(Create Package)[http://wiki.openwrt.org/doc/devel/packages]
-(Build Single Package)[http://wiki.openwrt.org/doc/howtobuild/single.package]
-(Building your own package for OpenWRT)[http://vivekian2.wordpress.com/2007/03/28/building-your-own-package-for-openwrt/]  
+(Write and cmopile a simple package for OpenWrt)[http://www.gargoyle-router.com/wiki/doku.php?id=openwrt_coding]  
+(Create Package)[http://wiki.openwrt.org/doc/devel/packages]  
+(Build Single Package)[http://wiki.openwrt.org/doc/howtobuild/single.package]  
+(Building your own package for OpenWRT)[http://vivekian2.wordpress.com/2007/03/28/building-your-own-package-for-openwrt/]    
